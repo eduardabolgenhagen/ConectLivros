@@ -5,6 +5,7 @@ import br.senai.sc.livros.model.service.LivroService;
 import br.senai.sc.livros.view.Menu;
 
 import java.util.ArrayList;
+import java.util.Collection;
 //Objeto que vai intermediar a view com a classe livros;
 //Livro livro = new Livro(new Autor("123","Leo","Rafaelli","leonardo@gmail.com","masc","123"), "Fourteen Ways To Do It", 3, 7000, 1243578);
 //LivrosView livroView = new LivroView();
@@ -73,15 +74,15 @@ public class LivrosController {
        new LivroService().inserir(Livro.cadastrar(titulo, Integer.parseInt(isbn), Integer.parseInt(qtdPag), (Autor)autor));
     }
 
-    public ArrayList<Livro> getAllLivros(){
+    public Collection<Livro> getAllLivros(){
         return new LivroService().getAllLivros();
     };
 
-    public ArrayList<Livro> selecionarPorAutor(){
+    public Collection<Livro> selecionarPorAutor(){
         return new LivroService().selecionarPorAutor(Menu.getUsuario());
     }
 
-    public ArrayList<Livro> listarAtividades(){
+    public Collection<Livro> listarAtividades(){
         return new LivroService().listarAtividades(Menu.getUsuario());
     }
 
@@ -97,8 +98,5 @@ public class LivrosController {
         new LivroService().adicionarRevisor(livro, (Revisor) usuario);
     }
 
-//    public ArrayList<Livro> selecionarPorStatus(){
-//        return new LivroService().selecionarPorStatus();
-//    }
 
 }

@@ -2,10 +2,10 @@ package br.senai.sc.livros.model.dao;
 
 import br.senai.sc.livros.model.entities.*;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class LivroDAO {
-    private static ArrayList<Livro> listaLivros = new ArrayList<>();
+    private static Collection<Livro> listaLivros = new HashSet<>();
 
 
     static{
@@ -45,16 +45,20 @@ public class LivroDAO {
     }
 
     public void atualizar(int isbn, Livro livroAtualizado){
-        int i = listaLivros.indexOf(selecionar(isbn));
-        listaLivros.set(i, livroAtualizado);
+        for (Livro livro : listaLivros){
+            if(livro.getISBN() == isbn){
+                listaLivros.remove(livro);
+                listaLivros.add(livroAtualizado);
+            }
+        }
     }
 
-    public ArrayList<Livro> getAllLivros(){
+    public Collection<Livro> getAllLivros(){
       return listaLivros;
     };
 
-    public ArrayList<Livro> selecionarPorAutor(Pessoa pessoa){
-        ArrayList<Livro> livrosAutor = new ArrayList<>();
+    public Collection<Livro> selecionarPorAutor(Pessoa pessoa){
+        Collection<Livro> livrosAutor = new ArrayList<>();
         for(Livro livro : getAllLivros()){
             if(livro.getAutor().equals(pessoa)){
                 livrosAutor.add(livro);
@@ -63,8 +67,8 @@ public class LivroDAO {
         return livrosAutor;
     }
 
-    public ArrayList<Livro> selecionarPorStatus(Status status){
-        ArrayList<Livro> livrosStatus = new ArrayList<>();
+    public Collection<Livro> selecionarPorStatus(Status status){
+        Collection<Livro> livrosStatus = new ArrayList<>();
         for(Livro livro : getAllLivros()){
             if(livro.getStatus().equals(status)){
                 livrosStatus.add(livro);
@@ -72,8 +76,8 @@ public class LivroDAO {
         }
         return livrosStatus;
     }
-    public ArrayList<Livro> selecionarAtividadesAutor(Pessoa pessoa){
-        ArrayList<Livro> livrosAutor = new ArrayList<>();
+    public Collection<Livro> selecionarAtividadesAutor(Pessoa pessoa){
+        Collection<Livro> livrosAutor = new ArrayList<>();
         for(Livro livro : getAllLivros()){
             if(livro.getAutor() == pessoa && livro.getStatus().equals(Status.AGUARDANDO_EDICAO)){
                 livrosAutor.add(livro);

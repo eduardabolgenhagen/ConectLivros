@@ -1,6 +1,7 @@
 package br.senai.sc.livros.model.entities;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Livro {
     private Autor autor;
@@ -127,5 +128,18 @@ public class Livro {
                 ", RevisorResponsável: " + revisorNome +
                 ", % Páginas revisadas: " + paginasRevisadas +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return this.ISBN == livro.ISBN;
+    }
+
+    @Override
+    public int hashCode() {
+        return ISBN;
     }
 }

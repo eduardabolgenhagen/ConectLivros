@@ -57,9 +57,9 @@ public class Estante extends JFrame {
 
         if (opcaoEstante == 1) {
             editarButton.setVisible(false);
-            tabelaLivros.setModel(new DefaultTableModelArrayList(livrosController.getAllLivros()));
+            tabelaLivros.setModel(new DefaultTableModelCollection(livrosController.getAllLivros()));
         } else {
-            tabelaLivros.setModel(new DefaultTableModelArrayList(livrosController.listarAtividades()));
+            tabelaLivros.setModel(new DefaultTableModelCollection(livrosController.listarAtividades()));
         }
         tabelaLivros.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setContentPane(estante);
