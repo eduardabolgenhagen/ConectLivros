@@ -27,8 +27,10 @@ public class LivroDAO {
     }
 
 
-    public void inserir(Livro livro){
+    public boolean inserir(Livro livro){
+       Boolean tmp= !listaLivros.contains(livro);
         listaLivros.add(livro);
+        return tmp;
     }
 
     public void remover(Livro livro){
@@ -54,7 +56,7 @@ public class LivroDAO {
     }
 
     public Collection<Livro> getAllLivros(){
-      return listaLivros;
+      return Collections.unmodifiableCollection(listaLivros);
     };
 
     public Collection<Livro> selecionarPorAutor(Pessoa pessoa){

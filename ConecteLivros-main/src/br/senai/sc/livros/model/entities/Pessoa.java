@@ -1,6 +1,7 @@
 package br.senai.sc.livros.model.entities;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Pessoa {
     private String CPF, nome, sobrenome, email, senha;
@@ -90,4 +91,15 @@ public class Pessoa {
             throw new RuntimeException("Senhas não conferem!");
         }
     };
+
+    @Override
+    public boolean equals(Object o) {
+        Pessoa outraPessoa = (Pessoa) o;
+        return CPF.equals(outraPessoa.CPF);
+    }
+
+    @Override
+    public int hashCode() {
+        return CPF.charAt(0);
+    }
 }

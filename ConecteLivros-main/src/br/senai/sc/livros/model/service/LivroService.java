@@ -13,8 +13,9 @@ import java.util.stream.Stream;
 public class LivroService {
     LivroDAO bdLivro = new LivroDAO();
 
-    public void inserir(Livro livro) {
-        bdLivro.inserir(livro);
+    public Boolean inserir(Livro livro) {
+        return bdLivro.inserir(livro);
+
     }
 
     public void remover(Livro livro) {

@@ -14,9 +14,11 @@ public class Livro {
 //    4 - Aguardando edição
 //    5 - Reprovado
 //    6 - Publicado
-    private int qntdPaginas;
-    private double paginasRevisadas = 0;
-    private int ISBN;
+
+    //Wrappers
+    private Integer qntdPaginas;
+    private Double paginasRevisadas = 0.0;
+    private Integer ISBN;
     private Pessoa revisor;
 
     static ArrayList<Livro> listaLivros = new ArrayList<Livro>();

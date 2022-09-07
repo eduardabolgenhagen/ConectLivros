@@ -70,8 +70,8 @@ public class LivrosController {
         model.setPaginasRevisadas(paginasRevisadas);
     }
 
-    public void cadastrar(String titulo, String isbn, String qtdPag, Pessoa autor){
-       new LivroService().inserir(Livro.cadastrar(titulo, Integer.parseInt(isbn), Integer.parseInt(qtdPag), (Autor)autor));
+    public Boolean cadastrar(String titulo, String isbn, String qtdPag, Pessoa autor){
+       return new LivroService().inserir(Livro.cadastrar(titulo, Integer.parseInt(isbn), Integer.parseInt(qtdPag), (Autor)autor));
     }
 
     public Collection<Livro> getAllLivros(){
